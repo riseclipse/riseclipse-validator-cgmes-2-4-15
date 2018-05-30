@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tools
+Bundle-SymbolicName: fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe.tools
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe-v2.4.15.tools
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe-v2.4.15,
+ fr.centralesupelec.edf.riseclipse.main,
+ fr.centralesupelec.edf.riseclipse.cim.cim16.util,
+ fr.centralesupelec.edf.riseclipse.cim.headerModel,
+ fr.centralesupelec.edf.riseclipse.validation.ocl,
+ fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe-v2.4.15.edit
+Export-Package: fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe.tools
