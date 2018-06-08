@@ -38,8 +38,8 @@ public class RiseClipseEntsoeCim16Validator {
     public static void usage( IRiseClipseConsole console ) {
         console.setLevel( IRiseClipseConsole.INFO_LEVEL );
 		console.info( "java -jar RiseClipseEntsoeCim16Validator.jar [--verbose] [--merge] [<oclFile> | <cimFile>]*" );
-		console.info( "Files ending with \".ocl\" are considered OCL files, all others are considered ENTSOE v2.4.15 files" );
-		console.info( "If --merge, all ENTSOE v2.4.15 files are merged before OCL validation" );
+		console.info( "Files ending with \".ocl\" are considered OCL files, all others are considered ENTSOE CGMES v2.4.15 files" );
+		console.info( "If --merge, all ENTSOE CGMES v2.4.15 files are merged before OCL validation" );
 		System.exit( -1 );
 	}
 
@@ -120,7 +120,7 @@ public class RiseClipseEntsoeCim16Validator {
         console.info( "Web site:" );
         console.info( "    http://wdi.supelec.fr/software/RiseClipse/" );
         console.info( "" );
-        console.info( "RiseClipseEntsoeCim16Validator version: 1.0.0" );
+        console.info( "RiseClipseEntsoeCim16Validator version: 1.0.1 (8 June 2018)" );
         console.info( "" );
     }
 
