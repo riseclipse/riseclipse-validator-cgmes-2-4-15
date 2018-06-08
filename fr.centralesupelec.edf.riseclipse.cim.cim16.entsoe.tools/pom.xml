@@ -4,13 +4,13 @@
  
   <groupId>fr.centralesupelec.edf.riseclipse</groupId>
   <artifactId>fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe.tools</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <parent>
     <groupId>fr.centralesupelec.edf.riseclipse</groupId>
     <artifactId>RiseClipseOCLValidator_EntsoeCim16</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
   </parent>
 
   <properties>
