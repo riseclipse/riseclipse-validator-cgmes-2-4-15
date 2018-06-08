@@ -12,9 +12,9 @@
   
   <parent>
     <groupId>fr.centralesupelec.edf.riseclipse</groupId>
-    <artifactId>fr.centralesupelec.edf.riseclipse.developer.maven-root</artifactId>
-    <version>1.0.1</version>
-    <relativePath>../RiseClipseDeveloper/fr.centralesupelec.edf.riseclipse.developer.maven/pom-root.xml</relativePath>
+    <artifactId>fr.centralesupelec.edf.riseclipse.developer.maven</artifactId>
+    <version>1.0.4</version>
+    <relativePath>../RiseClipseDeveloper/fr.centralesupelec.edf.riseclipse.developer.maven/pom.xml</relativePath>
   </parent>
   
   <scm>
@@ -49,7 +49,7 @@
     <!-- These dependencies are found locally after using the command
            mvn eclipse:to-maven -DstripQualifier=true
          on a computer with Eclipse installed
-         and answering (repalce ~ with path to the home directory)
+         and answering (replacing ~ with path to the home directory)
            ~/.p2/pool
          to the question
            [INFO] Eclipse directory? 
@@ -97,42 +97,42 @@
     <dependency>
       <groupId>fr.centralesupelec.edf.riseclipse</groupId>
       <artifactId>fr.centralesupelec.edf.riseclipse.main</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>fr.centralesupelec.edf.riseclipse</groupId>
-      <artifactId>fr.centralesupelec.edf.riseclipse.cim.util</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>fr.centralesupelec.edf.riseclipse</groupId>
-      <artifactId>fr.centralesupelec.edf.riseclipse.cim.headerModel</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>fr.centralesupelec.edf.riseclipse</groupId>
-      <artifactId>fr.centralesupelec.edf.riseclipse.cim.headerModel.edit</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>fr.centralesupelec.edf.riseclipse</groupId>
-      <artifactId>fr.centralesupelec.edf.riseclipse.cim.cim16.util</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>fr.centralesupelec.edf.riseclipse</groupId>
-      <artifactId>fr.centralesupelec.edf.riseclipse.validation.ocl</artifactId>
       <version>1.0.1</version>
     </dependency>
     <dependency>
       <groupId>fr.centralesupelec.edf.riseclipse</groupId>
+      <artifactId>fr.centralesupelec.edf.riseclipse.cim.util</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>fr.centralesupelec.edf.riseclipse</groupId>
+      <artifactId>fr.centralesupelec.edf.riseclipse.cim.headerModel</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>fr.centralesupelec.edf.riseclipse</groupId>
+      <artifactId>fr.centralesupelec.edf.riseclipse.cim.headerModel.edit</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>fr.centralesupelec.edf.riseclipse</groupId>
+      <artifactId>fr.centralesupelec.edf.riseclipse.cim.cim16.util</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>fr.centralesupelec.edf.riseclipse</groupId>
+      <artifactId>fr.centralesupelec.edf.riseclipse.validation.ocl</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>fr.centralesupelec.edf.riseclipse</groupId>
       <artifactId>fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe-v2.4.15</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>fr.centralesupelec.edf.riseclipse</groupId>
       <artifactId>fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe-v2.4.15.edit</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <version>1.0.0</version>
     </dependency>
   </dependencies>
 
