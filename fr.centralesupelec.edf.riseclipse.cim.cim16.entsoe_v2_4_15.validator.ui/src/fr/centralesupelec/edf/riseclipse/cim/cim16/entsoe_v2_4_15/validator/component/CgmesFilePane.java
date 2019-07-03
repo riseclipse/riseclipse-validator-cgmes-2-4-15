@@ -29,8 +29,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator.RiseClipseEntsoeCim16Validator;
-import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator.ui.application.RiseClipseEntsoeCim16ValidatorApplication;
+import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator.RiseClipseValidatorCGMES;
+import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator.ui.application.RiseClipseValidatorCGMESApplication;
 import fr.centralesupelec.edf.riseclipse.util.AbstractRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.util.IRiseClipseConsole;
 
@@ -40,9 +40,9 @@ public class CgmesFilePane extends JPanel implements ActionListener {
     private JButton btnAddCgmesFile;
     private JButton btnValidate;
     private CgmesFileList cgmesFilesList;
-    private RiseClipseEntsoeCim16ValidatorApplication application;
+    private RiseClipseValidatorCGMESApplication application;
 
-    public CgmesFilePane( RiseClipseEntsoeCim16ValidatorApplication application ) {
+    public CgmesFilePane( RiseClipseValidatorCGMESApplication application ) {
         this.application = application;
         
         setLayout( new BorderLayout( 0, 0 ));
@@ -85,14 +85,14 @@ public class CgmesFilePane extends JPanel implements ActionListener {
             
             IRiseClipseConsole console = result.getMainConsole();
             AbstractRiseClipseConsole.changeConsole( console );
-            RiseClipseEntsoeCim16Validator.displayLegal( console );
-            RiseClipseEntsoeCim16Validator.prepare( oclFiles );
+            RiseClipseValidatorCGMES.displayLegal( console );
+            RiseClipseValidatorCGMES.prepare( oclFiles );
             result.repaint();
             for( int i = 0; i < sclFiles.size(); ++i ) {
                 console = result.getConsoleFor( sclFiles.get( i ));
                 AbstractRiseClipseConsole.changeConsole( console );
-                RiseClipseEntsoeCim16Validator.resetLoadFinalize( console, sclFiles.get( i ));
-                RiseClipseEntsoeCim16Validator.run( console );
+                RiseClipseValidatorCGMES.resetLoadFinalize( console, sclFiles.get( i ));
+                RiseClipseValidatorCGMES.run( console );
                 result.repaint();
             }
 

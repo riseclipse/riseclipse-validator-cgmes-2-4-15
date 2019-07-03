@@ -29,7 +29,7 @@ public class ResultFrame extends JFrame {
     private JTabbedPane tabbedPane;
 
     public ResultFrame() {
-        setTitle( "RiseClipseEntsoeCim16Validator results" );
+        setTitle( "RiseClipseValidatorCGMES results" );
         setBounds( 200, 200, 800, 600 );
         
         tabbedPane = new JTabbedPane( JTabbedPane.TOP );
@@ -40,7 +40,7 @@ public class ResultFrame extends JFrame {
     
     public IRiseClipseConsole getMainConsole() {
         ResultPane console = new ResultPane( null, false );
-        tabbedPane.addTab( "RiseClipseEntsoeCim16Validator", null, console, null );
+        tabbedPane.addTab( "RiseClipseValidatorCGMES", null, console, null );
         return console;
     }
 

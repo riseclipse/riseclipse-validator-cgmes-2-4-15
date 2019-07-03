@@ -14,7 +14,7 @@
   </parent>
 
   <properties>
-    <toolName>RiseClipseEntsoeCim16ValidatorApplication</toolName>
+    <toolName>RiseClipseValidatorCGMESApplication</toolName>
   </properties>
 
   <build>
@@ -39,7 +39,7 @@
             <configuration>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator.ui.application.RiseClipseEntsoeCim16ValidatorApplication</mainClass>
+                  <mainClass>fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator.ui.application.RiseClipseValidatorCGMESApplication</mainClass>
                 </transformer>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                   <resource>plugin.properties</resource>

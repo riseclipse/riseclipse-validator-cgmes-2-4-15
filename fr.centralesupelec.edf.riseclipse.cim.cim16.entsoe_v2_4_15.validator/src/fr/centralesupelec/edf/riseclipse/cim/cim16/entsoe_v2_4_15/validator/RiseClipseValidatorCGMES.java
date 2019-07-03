@@ -50,7 +50,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.ocl.pivot.validation.ComposedEValidator;
 
-public class RiseClipseEntsoeCim16Validator {
+public class RiseClipseValidatorCGMES {
 
     private static OCLValidator oclValidator;
     private static CimItemProviderAdapterFactory adapter;
@@ -61,7 +61,7 @@ public class RiseClipseEntsoeCim16Validator {
         IRiseClipseConsole console = AbstractRiseClipseConsole.getConsole();
         
         console.setLevel( IRiseClipseConsole.INFO_LEVEL );
-		console.info( "java -jar RiseClipseEntsoeCim16Validator.jar [--verbose | --info | --warning | --error] [--output <file>] [--merge] [<oclFile> | <cimFile>]*" );
+		console.info( "java -jar RiseClipseValidatorCGMES.jar [--verbose | --info | --warning | --error] [--output <file>] [--merge] [<oclFile> | <cimFile>]*" );
 		console.info( "Files ending with \".ocl\" are considered OCL files, all others are considered ENTSOE CGMES v2.4.15 files" );
 		console.info( "If --merge, all ENTSOE CGMES v2.4.15 files are merged before OCL validation" );
 		System.exit( -1 );
@@ -162,7 +162,7 @@ public class RiseClipseEntsoeCim16Validator {
         console.info( "Web site:" );
         console.info( "    http://wdi.supelec.fr/software/RiseClipse/" );
         console.info( "" );
-        console.info( "RiseClipseEntsoeCim16Validator version: 1.1.0 a1 (3 July 2019)" );
+        console.info( "RiseClipseValidatorCGMES version: 1.1.0 a2 (3 July 2019)" );
         console.info( "" );
     }
 
