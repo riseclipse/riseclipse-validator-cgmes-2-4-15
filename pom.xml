@@ -151,8 +151,8 @@
 
 
   <modules>
-    <module>fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe.tools</module>
-    <module>fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe.tools.ui</module>
+    <module>fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator</module>
+    <module>fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator.ui</module>
   </modules>
 
 </project>
