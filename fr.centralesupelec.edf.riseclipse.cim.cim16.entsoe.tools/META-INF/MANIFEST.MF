@@ -13,5 +13,6 @@ Require-Bundle: fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe-v2.4.15,
  fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe-v2.4.15.edit,
  fr.centralesupelec.edf.riseclipse.cim.util,
  org.eclipse.jdt.annotation,
- org.eclipse.ocl.pivot
+ org.eclipse.ocl.pivot,
+ fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe-v2.4.15.utilities
 Export-Package: fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe.tools

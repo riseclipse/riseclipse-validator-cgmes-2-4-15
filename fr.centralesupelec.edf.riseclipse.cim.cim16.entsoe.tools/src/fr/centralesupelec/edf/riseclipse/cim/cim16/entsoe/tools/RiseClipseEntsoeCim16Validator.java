@@ -28,6 +28,7 @@ import java.util.Map;
 
 import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.cim.CimPackage;
 import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.cim.provider.CimItemProviderAdapterFactory;
+import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.utilities.EntsoeCim16ModelLoader;
 import fr.centralesupelec.edf.riseclipse.util.AbstractRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.util.FileRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.util.IRiseClipseConsole;
