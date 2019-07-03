@@ -86,7 +86,7 @@ public class CgmesFilePane extends JPanel implements ActionListener {
             IRiseClipseConsole console = result.getMainConsole();
             AbstractRiseClipseConsole.changeConsole( console );
             RiseClipseEntsoeCim16Validator.displayLegal( console );
-            RiseClipseEntsoeCim16Validator.prepare( console, oclFiles );
+            RiseClipseEntsoeCim16Validator.prepare( oclFiles );
             result.repaint();
             for( int i = 0; i < sclFiles.size(); ++i ) {
                 console = result.getConsoleFor( sclFiles.get( i ));

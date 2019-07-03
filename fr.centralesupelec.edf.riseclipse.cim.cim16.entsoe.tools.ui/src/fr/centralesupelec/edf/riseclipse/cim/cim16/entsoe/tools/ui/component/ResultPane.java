@@ -152,28 +152,43 @@ public class ResultPane extends JPanel implements IRiseClipseConsole, ActionList
         return IRiseClipseConsole.INFO_LEVEL;
     }
 
+    /**
+     * Utility to create a String by concatenation of Object
+     */
+    private String toString( Object... objects ) {
+        StringBuilder s = new StringBuilder();
+        for( int i = 0; i < objects.length; ++i ) s.append( objects[i].toString() );
+        return s.toString();
+    }
+    
     @Override
-    public void info( Object o ) {
+    public void verbose( Object... o ) {
+        levels.add( IRiseClipseConsole.VERBOSE_LEVEL );
+        messages.add( toString( o ));
+    }
+
+    @Override
+    public void info( Object... o ) {
         levels.add( IRiseClipseConsole.INFO_LEVEL );
-        messages.add( o.toString() );
+        messages.add( toString( o ));
     }
 
     @Override
-    public void warning( Object o ) {
+    public void warning( Object... o ) {
         levels.add( IRiseClipseConsole.WARNING_LEVEL );
-        messages.add( o.toString() );
+        messages.add( toString( o ));
     }
 
     @Override
-    public void error( Object o ) {
+    public void error( Object... o ) {
         levels.add( IRiseClipseConsole.ERROR_LEVEL );
-        messages.add( o.toString() );
+        messages.add( toString( o ));
     }
 
     @Override
-    public void fatal( Object o ) {
+    public void fatal( Object... o ) {
         levels.add( IRiseClipseConsole.FATAL_LEVEL );
-        messages.add( o.toString() );
+        messages.add( toString( o ));
     }
 
     @Override
@@ -227,6 +242,18 @@ public class ResultPane extends JPanel implements IRiseClipseConsole, ActionList
             }
             
         }
+    }
+
+    @Override
+    public void displayIdenticalMessages() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void doNotDisplayIdenticalMessages() {
+        // TODO Auto-generated method stub
+        
     }
     
     

@@ -4,7 +4,7 @@
  
   <groupId>fr.centralesupelec.edf.riseclipse</groupId>
   <artifactId>RiseClipseOCLValidator_EntsoeCim16</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   
   <parent>
@@ -22,27 +22,6 @@
 
   <!-- Common dependencies -->
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.eclipse.emf/org.eclipse.emf.ecore -->
-    <dependency>
-        <groupId>org.eclipse.emf</groupId>
-        <artifactId>org.eclipse.emf.ecore</artifactId>
-        <version>${eclipse-emf-version}</version>
-    </dependency>
-    
-    <!-- https://mvnrepository.com/artifact/org.eclipse.emf/org.eclipse.emf.common -->
-    <dependency>
-        <groupId>org.eclipse.emf</groupId>
-        <artifactId>org.eclipse.emf.common</artifactId>
-        <version>${eclipse-emf-version}</version>
-    </dependency>
-    
-    <!-- https://mvnrepository.com/artifact/org.eclipse.emf/org.eclipse.emf.ecore.xmi -->
-    <dependency>
-        <groupId>org.eclipse.emf</groupId>
-        <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-        <version>${eclipse-emf-version}</version>
-    </dependency>        
-    
     <!-- These dependencies are found locally after using the command
            mvn eclipse:to-maven -DstripQualifier=true
          on a computer with Eclipse installed
@@ -52,15 +31,33 @@
            [INFO] Eclipse directory? 
      -->
     <dependency>
-       <groupId>org.eclipse.ocl</groupId>
-       <artifactId>pivot</artifactId>
-       <version>${eclipse-ocl-version}</version>
+       <groupId>org.eclipse.equinox</groupId>
+       <artifactId>app</artifactId>
+       <version>${eclipse-equinox-app-version}</version>
     </dependency>
     
     <dependency>
-       <groupId>org.eclipse.equinox</groupId>
-       <artifactId>app</artifactId>
-       <version>${eclipse-equinox-version}</version>
+      <groupId>org.eclipse.emf</groupId>
+      <artifactId>ecore</artifactId>
+      <version>${eclipse-emf-ecore-version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.eclipse.emf</groupId>
+      <artifactId>common</artifactId>
+      <version>${eclipse-emf-common-version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.eclipse.emf.ecore</groupId>
+      <artifactId>xmi</artifactId>
+      <version>${eclipse-emf-xmi-version}</version>
+    </dependency>
+    
+    <dependency>
+       <groupId>org.eclipse.ocl</groupId>
+       <artifactId>pivot</artifactId>
+       <version>${eclipse-ocl-version}</version>
     </dependency>
     
     <dependency>
@@ -72,6 +69,12 @@
     <dependency>
        <groupId>org.eclipse.ocl.xtext</groupId>
        <artifactId>oclstdlib</artifactId>
+       <version>${eclipse-ocl-version}</version>
+    </dependency>
+    
+    <dependency>
+       <groupId>org.eclipse.ocl.xtext</groupId>
+       <artifactId>oclinecore</artifactId>
        <version>${eclipse-ocl-version}</version>
     </dependency>
     
@@ -87,9 +90,17 @@
     <dependency>
         <groupId>javax.inject</groupId>
         <artifactId>javax.inject</artifactId>
-        <version>1</version>
+        <version>${javax-inject-version}</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${apache-lang3-version}</version>
+    </dependency>
+
+    <!-- RiseClipse needed plugins -->
     <!-- RiseClipse needed plugins -->
     <dependency>
       <groupId>fr.centralesupelec.edf.riseclipse</groupId>
