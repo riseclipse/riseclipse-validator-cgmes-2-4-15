@@ -31,7 +31,7 @@ import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator.comp
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 
-public class RiseClipseEntsoeCim16ValidatorApplication {
+public class RiseClipseValidatorCGMESApplication {
 
     private JFrame frame;
     private OCLFilePane oclTree;
@@ -43,7 +43,7 @@ public class RiseClipseEntsoeCim16ValidatorApplication {
         EventQueue.invokeLater( new Runnable() {
             public void run() {
                 try {
-                    RiseClipseEntsoeCim16ValidatorApplication window = new RiseClipseEntsoeCim16ValidatorApplication();
+                    RiseClipseValidatorCGMESApplication window = new RiseClipseValidatorCGMESApplication();
                     window.frame.setVisible( true );
                 }
                 catch( Exception e ) {
@@ -56,7 +56,7 @@ public class RiseClipseEntsoeCim16ValidatorApplication {
     /**
      * Create the application.
      */
-    public RiseClipseEntsoeCim16ValidatorApplication() {
+    public RiseClipseValidatorCGMESApplication() {
         initialize();
     }
 
@@ -65,7 +65,7 @@ public class RiseClipseEntsoeCim16ValidatorApplication {
      */
     private void initialize() {
         frame = new JFrame();
-        frame.setTitle( "RiseClipseEntsoeCim16ValidatorApplication" );
+        frame.setTitle( "RiseClipseValidatorCGMESApplication" );
         frame.setBounds( 100, 100, 800, 600 );
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
