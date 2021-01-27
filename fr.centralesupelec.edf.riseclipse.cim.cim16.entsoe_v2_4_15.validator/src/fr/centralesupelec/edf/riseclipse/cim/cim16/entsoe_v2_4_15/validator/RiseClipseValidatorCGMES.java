@@ -30,6 +30,7 @@ import java.util.Map;
 import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.cim.CimPackage;
 import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.cim.provider.CimItemProviderAdapterFactory;
 import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.utilities.EntsoeCim16ModelLoader;
+import fr.centralesupelec.edf.riseclipse.cim.headerModel.ModelDescription.ModelDescriptionPackage;
 import fr.centralesupelec.edf.riseclipse.util.AbstractRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.util.FileRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.util.IRiseClipseConsole;
@@ -173,6 +174,10 @@ public class RiseClipseValidatorCGMES {
         CimPackage cimPkg = CimPackage.eINSTANCE;
         if( cimPkg == null ) {
             throw new RiseClipseFatalException( "CIM package not found", null );
+        }
+        ModelDescriptionPackage modelPkg = ModelDescriptionPackage.eINSTANCE;
+        if( modelPkg == null ) {
+            throw new RiseClipseFatalException( "ModelDescription package not found", null );
         }
 
         ComposedEValidator validator = ComposedEValidator.install( cimPkg );
