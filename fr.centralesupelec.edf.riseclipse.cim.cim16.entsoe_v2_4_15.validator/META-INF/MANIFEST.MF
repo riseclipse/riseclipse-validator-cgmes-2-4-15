@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Tools
 Bundle-SymbolicName: fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe-v2.4.15.validator
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Automatic-Module-Name: fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe-v2.4.15.tools
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe-v2.4.15,
  fr.centralesupelec.edf.riseclipse.main,
  fr.centralesupelec.edf.riseclipse.cim.cim16.util,
