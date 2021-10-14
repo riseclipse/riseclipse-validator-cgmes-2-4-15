@@ -1,6 +1,6 @@
 /*
 *************************************************************************
-**  Copyright (c) 2019 CentraleSupélec & EDF.
+**  Copyright (c) 2016-2021 CentraleSupélec & EDF.
 **  All rights reserved. This program and the accompanying materials
 **  are made available under the terms of the Eclipse Public License v2.0
 **  which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@
 **      dominique.marcadet@centralesupelec.fr
 **      aurelie.dehouck-neveu@edf.fr
 **  Web site:
-**      http://wdi.supelec.fr/software/RiseClipse/
+**      https://riseclipse.github.io
 *************************************************************************
 */
 package fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator;
@@ -147,14 +147,13 @@ public class RiseClipseValidatorCGMES {
     }
     
     public static void displayLegal( IRiseClipseConsole console ) {
-        console.info( "Copyright (c) 2019 CentraleSupélec & EDF." );
+        console.info( "Copyright (c) 2016-2021 CentraleSupélec & EDF." );
         console.info( "All rights reserved. This program and the accompanying materials" );
         console.info( "are made available under the terms of the Eclipse Public License v2.0" );
         console.info( "which accompanies this distribution, and is available at" );
         console.info( "https://www.eclipse.org/legal/epl-v20.html" );
         console.info( "" );
-        console.info( "This file is part of the RiseClipse tool." );
-        console.info( "" );
+        console.info( "This tool is part of RiseClipse." );
         console.info( "Contributors:" );
         console.info( "    Computer Science Department, CentraleSupélec" );
         console.info( "    EDF R&D" );
@@ -162,7 +161,7 @@ public class RiseClipseValidatorCGMES {
         console.info( "    dominique.marcadet@centralesupelec.fr" );
         console.info( "    aurelie.dehouck-neveu@edf.fr" );
         console.info( "Web site:" );
-        console.info( "    http://wdi.supelec.fr/software/RiseClipse/" );
+        console.info( "    https://riseclipse.github.io/" );
         console.info( "" );
         console.info( "RiseClipseValidatorCGMES version: 1.1.0 a2 (3 July 2019)" );
         console.info( "" );

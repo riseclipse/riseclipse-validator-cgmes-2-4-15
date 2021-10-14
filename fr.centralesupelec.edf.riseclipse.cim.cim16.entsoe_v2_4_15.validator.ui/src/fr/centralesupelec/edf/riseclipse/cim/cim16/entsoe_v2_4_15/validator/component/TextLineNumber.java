@@ -15,7 +15,7 @@
  *  This file is part of the RiseClipse tool
  *  
  *  Web site:
- *      http://wdi.supelec.fr/software/RiseClipse/
+**      https://riseclipse.github.io
  */
 package fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator.component;
 
