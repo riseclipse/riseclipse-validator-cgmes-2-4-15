@@ -163,7 +163,7 @@ public class RiseClipseValidatorCGMES {
         console.info( "Web site:" );
         console.info( "    https://riseclipse.github.io/" );
         console.info( "" );
-        console.info( "RiseClipseValidatorCGMES version: 1.1.0 a2 (3 July 2019)" );
+        console.info( "RiseClipseValidatorCGMES version: 1.1.0 a3 (15 October 2021)" );
         console.info( "" );
     }
 
