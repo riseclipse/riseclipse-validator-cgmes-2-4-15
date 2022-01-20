@@ -1,6 +1,6 @@
 /*
 *************************************************************************
-**  Copyright (c) 2016-2021 CentraleSupélec & EDF.
+**  Copyright (c) 2016-2022 CentraleSupélec & EDF.
 **  All rights reserved. This program and the accompanying materials
 **  are made available under the terms of the Eclipse Public License v2.0
 **  which accompanies this distribution, and is available at
@@ -163,7 +163,7 @@ public class RiseClipseValidatorCGMES {
         console.info( "Web site:" );
         console.info( "    https://riseclipse.github.io/" );
         console.info( "" );
-        console.info( "RiseClipseValidatorCGMES version: 1.1.0 a3 (15 October 2021)" );
+        console.info( "RiseClipseValidatorCGMES version: 1.1.0 a3 (20 January 2022)" );
         console.info( "" );
     }
 
