@@ -1,6 +1,6 @@
 /*
 *************************************************************************
-**  Copyright (c) 2019 CentraleSupélec & EDF.
+**  Copyright (c) 2016-2022 CentraleSupélec & EDF.
 **  All rights reserved. This program and the accompanying materials
 **  are made available under the terms of the Eclipse Public License v2.0
 **  which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@
 **      dominique.marcadet@centralesupelec.fr
 **      aurelie.dehouck-neveu@edf.fr
 **  Web site:
-**      http://wdi.supelec.fr/software/RiseClipse/
+**      https://riseclipse.github.io
 *************************************************************************
 */
 package fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.validator;
@@ -30,6 +30,7 @@ import java.util.Map;
 import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.cim.CimPackage;
 import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.cim.provider.CimItemProviderAdapterFactory;
 import fr.centralesupelec.edf.riseclipse.cim.cim16.entsoe_v2_4_15.utilities.EntsoeCim16ModelLoader;
+import fr.centralesupelec.edf.riseclipse.cim.headerModel.ModelDescription.ModelDescriptionPackage;
 import fr.centralesupelec.edf.riseclipse.util.AbstractRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.util.FileRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.util.IRiseClipseConsole;
@@ -146,14 +147,13 @@ public class RiseClipseValidatorCGMES {
     }
     
     public static void displayLegal( IRiseClipseConsole console ) {
-        console.info( "Copyright (c) 2019 CentraleSupélec & EDF." );
+        console.info( "Copyright (c) 2016-2021 CentraleSupélec & EDF." );
         console.info( "All rights reserved. This program and the accompanying materials" );
         console.info( "are made available under the terms of the Eclipse Public License v2.0" );
         console.info( "which accompanies this distribution, and is available at" );
         console.info( "https://www.eclipse.org/legal/epl-v20.html" );
         console.info( "" );
-        console.info( "This file is part of the RiseClipse tool." );
-        console.info( "" );
+        console.info( "This tool is part of RiseClipse." );
         console.info( "Contributors:" );
         console.info( "    Computer Science Department, CentraleSupélec" );
         console.info( "    EDF R&D" );
@@ -161,9 +161,9 @@ public class RiseClipseValidatorCGMES {
         console.info( "    dominique.marcadet@centralesupelec.fr" );
         console.info( "    aurelie.dehouck-neveu@edf.fr" );
         console.info( "Web site:" );
-        console.info( "    http://wdi.supelec.fr/software/RiseClipse/" );
+        console.info( "    https://riseclipse.github.io/" );
         console.info( "" );
-        console.info( "RiseClipseValidatorCGMES version: 1.1.0 a2 (3 July 2019)" );
+        console.info( "RiseClipseValidatorCGMES version: 1.1.0 a3 (20 January 2022)" );
         console.info( "" );
     }
 
@@ -173,6 +173,10 @@ public class RiseClipseValidatorCGMES {
         CimPackage cimPkg = CimPackage.eINSTANCE;
         if( cimPkg == null ) {
             throw new RiseClipseFatalException( "CIM package not found", null );
+        }
+        ModelDescriptionPackage modelPkg = ModelDescriptionPackage.eINSTANCE;
+        if( modelPkg == null ) {
+            throw new RiseClipseFatalException( "ModelDescription package not found", null );
         }
 
         ComposedEValidator validator = ComposedEValidator.install( cimPkg );
