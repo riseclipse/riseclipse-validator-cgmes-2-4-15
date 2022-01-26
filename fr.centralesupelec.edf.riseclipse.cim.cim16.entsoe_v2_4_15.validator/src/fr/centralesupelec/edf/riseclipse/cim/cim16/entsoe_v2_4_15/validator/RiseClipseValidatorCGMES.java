@@ -35,6 +35,8 @@ import fr.centralesupelec.edf.riseclipse.util.AbstractRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.util.FileRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.util.IRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.util.RiseClipseFatalException;
+import fr.centralesupelec.edf.riseclipse.util.RiseClipseMessage;
+import fr.centralesupelec.edf.riseclipse.util.Severity;
 import fr.centralesupelec.edf.riseclipse.util.TextRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.validation.ocl.OCLValidator;
 
@@ -54,6 +56,9 @@ import org.eclipse.ocl.pivot.validation.ComposedEValidator;
 
 public class RiseClipseValidatorCGMES {
 
+    private static final String VALIDATOR_CIM_CATEGORY = "CIM/Validator";
+    private static final String INFO_FORMAT_STRING = "%1$-7s: %4$s";
+    
     private static OCLValidator oclValidator;
     private static CimItemProviderAdapterFactory adapter;
     private static EntsoeCim16ModelLoader loader;
@@ -61,17 +66,19 @@ public class RiseClipseValidatorCGMES {
 
     public static void usage() {
         IRiseClipseConsole console = AbstractRiseClipseConsole.getConsole();
+        console.setLevel( Severity.INFO );
+        console.setFormatString( INFO_FORMAT_STRING );
         
-        console.setLevel( IRiseClipseConsole.INFO_LEVEL );
-		console.info( "java -jar RiseClipseValidatorCGMES.jar [--verbose | --info | --warning | --error] [--output <file>] [--merge] [<oclFile> | <cimFile>]*" );
-		console.info( "Files ending with \".ocl\" are considered OCL files, all others are considered ENTSOE CGMES v2.4.15 files" );
-		console.info( "If --merge, all ENTSOE CGMES v2.4.15 files are merged before OCL validation" );
+        
+		console.info( VALIDATOR_CIM_CATEGORY, 0, "java -jar RiseClipseValidatorCGMES.jar [--verbose | --info | --warning | --error] [--output <file>] [--merge] [<oclFile> | <cimFile>]*" );
+		console.info( VALIDATOR_CIM_CATEGORY, 0, "Files ending with \".ocl\" are considered OCL files, all others are considered ENTSOE CGMES v2.4.15 files" );
+		console.info( VALIDATOR_CIM_CATEGORY, 0, "If --merge, all ENTSOE CGMES v2.4.15 files are merged before OCL validation" );
 		System.exit( -1 );
 	}
 
     public static void main( String[] args ) {
     	
-        int consoleLevel = IRiseClipseConsole.WARNING_LEVEL;
+        Severity consoleLevel = Severity.WARNING;
         
         
         if( args.length == 0 ) usage();
@@ -83,16 +90,16 @@ public class RiseClipseValidatorCGMES {
             if( args[i].startsWith( "--" )) {
                 posFiles = i + 1;
                 if( "--verbose".equals( args[i] ) ) {
-                    consoleLevel = IRiseClipseConsole.VERBOSE_LEVEL;
+                    consoleLevel = Severity.VERBOSE;
                 }
                 else if( "--info".equals( args[i] ) ) {
-                    consoleLevel = IRiseClipseConsole.INFO_LEVEL;
+                    consoleLevel = Severity.INFO;
                 }
                 else if( "--warning".equals( args[i] ) ) {
-                    consoleLevel = IRiseClipseConsole.WARNING_LEVEL;
+                    consoleLevel = Severity.WARNING;
                 }
                 else if( "--error".equals( args[i] ) ) {
-                    consoleLevel = IRiseClipseConsole.ERROR_LEVEL;
+                    consoleLevel = Severity.ERROR;
                 }
                 else if( "--output".equals( args[i] ) ) {
                     if( ++i < args.length ) {
@@ -105,7 +112,7 @@ public class RiseClipseValidatorCGMES {
                     merge = true;
                 }
                 else {
-                    AbstractRiseClipseConsole.getConsole().error( "Unrecognized option " + args[i] );
+                    AbstractRiseClipseConsole.getConsole().error( VALIDATOR_CIM_CATEGORY, 0, "Unrecognized option ", args[i] );
                     usage();
                 }
             }
@@ -113,7 +120,7 @@ public class RiseClipseValidatorCGMES {
 
         IRiseClipseConsole console = ( outputFile == null ) ? new TextRiseClipseConsole() : new FileRiseClipseConsole( outputFile );
         AbstractRiseClipseConsole.changeConsole( console );
-        console.setLevel( IRiseClipseConsole.INFO_LEVEL );
+        console.setLevel( Severity.INFO );
         displayLegal( console );
         console.setLevel( consoleLevel );
 
@@ -147,24 +154,30 @@ public class RiseClipseValidatorCGMES {
     }
     
     public static void displayLegal( IRiseClipseConsole console ) {
-        console.info( "Copyright (c) 2016-2021 CentraleSupélec & EDF." );
-        console.info( "All rights reserved. This program and the accompanying materials" );
-        console.info( "are made available under the terms of the Eclipse Public License v2.0" );
-        console.info( "which accompanies this distribution, and is available at" );
-        console.info( "https://www.eclipse.org/legal/epl-v20.html" );
-        console.info( "" );
-        console.info( "This tool is part of RiseClipse." );
-        console.info( "Contributors:" );
-        console.info( "    Computer Science Department, CentraleSupélec" );
-        console.info( "    EDF R&D" );
-        console.info( "Contacts:" );
-        console.info( "    dominique.marcadet@centralesupelec.fr" );
-        console.info( "    aurelie.dehouck-neveu@edf.fr" );
-        console.info( "Web site:" );
-        console.info( "    https://riseclipse.github.io/" );
-        console.info( "" );
-        console.info( "RiseClipseValidatorCGMES version: 1.1.0 a3 (20 January 2022)" );
-        console.info( "" );
+        Severity oldLevel = console.setLevel( Severity.INFO );
+        String oldFormat = console.setFormatString( INFO_FORMAT_STRING );
+        
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "Copyright (c) 2016-2021 CentraleSupélec & EDF." );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "All rights reserved. This program and the accompanying materials" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "are made available under the terms of the Eclipse Public License v2.0" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "which accompanies this distribution, and is available at" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "https://www.eclipse.org/legal/epl-v20.html" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "This tool is part of RiseClipse." );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "Contributors:" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "    Computer Science Department, CentraleSupélec" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "    EDF R&D" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "Contacts:" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "    dominique.marcadet@centralesupelec.fr" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "    aurelie.dehouck-neveu@edf.fr" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "Web site:" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "    https://riseclipse.github.io/" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "RiseClipseValidatorCGMES version: 1.1.0 a3 (20 January 2022)" );
+        console.info( VALIDATOR_CIM_CATEGORY, 0, "" );
+
+        console.setFormatString( oldFormat );
+        console.setLevel( oldLevel );
     }
 
     public static void prepare( ArrayList< File > oclFiles ) {
@@ -198,7 +211,7 @@ public class RiseClipseValidatorCGMES {
         for( Resource resource : loader.getResourceSet().getResources() ) {
             // Some empty resources may be created when other URI are present
             if( resource.getContents().size() > 0 ) {
-                console.info( "Validating file: " + resource.getURI().lastSegment() );
+                console.info( VALIDATOR_CIM_CATEGORY, 0, "Validating file: ", resource.getURI().lastSegment() );
                 validate( resource, adapter );
             }
         }
@@ -238,6 +251,23 @@ public class RiseClipseValidatorCGMES {
                 List< ? > data = childDiagnostic.getData();
                 EObject object = ( EObject ) data.get( 0 );
                 String message = childDiagnostic.getMessage();
+                String[] parts = message.split( ";" );
+                if(( parts.length == 4 ) && ( parts[1].startsWith( "OCL" ))) {
+                    // This should be an OCL message with the new format
+                    Severity severity = Severity.ERROR;
+                    try {
+                        severity = Severity.valueOf( parts[0] );
+                    }
+                    catch( IllegalArgumentException ex ) {}
+                    int line = 0;
+                    try {
+                        line = Integer.valueOf( parts[2] );
+                    }
+                    catch( NumberFormatException ex ) {}
+                    console.output( new RiseClipseMessage( severity, parts[1], line, parts[3] ));
+                    continue;
+                }
+
                 if(( data.size() > 1 ) && ( data.get( 1 ) instanceof EAttribute )) {
                     EAttribute attribute = ( EAttribute ) data.get( 1 );
                     if( attribute == null ) continue;
@@ -248,13 +278,13 @@ public class RiseClipseValidatorCGMES {
 
                 switch( childDiagnostic.getSeverity() ) {
                 case Diagnostic.INFO:
-                    console.info( message );
+                    console.info( VALIDATOR_CIM_CATEGORY, 0, message );
                     break;
                 case Diagnostic.WARNING:
-                    console.warning( message );
+                    console.warning( VALIDATOR_CIM_CATEGORY, 0, message );
                     break;
                 case Diagnostic.ERROR:
-                    console.error( message );
+                    console.error( VALIDATOR_CIM_CATEGORY, 0, message );
                     break;
                 }
             }

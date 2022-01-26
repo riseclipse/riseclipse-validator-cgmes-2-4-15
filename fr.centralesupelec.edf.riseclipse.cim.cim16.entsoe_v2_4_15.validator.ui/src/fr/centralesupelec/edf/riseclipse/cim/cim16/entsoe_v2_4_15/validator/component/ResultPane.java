@@ -31,6 +31,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Formatter;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -42,14 +43,20 @@ import javax.swing.JTextArea;
 
 import fr.centralesupelec.edf.riseclipse.util.AbstractRiseClipseConsole;
 import fr.centralesupelec.edf.riseclipse.util.IRiseClipseConsole;
+import fr.centralesupelec.edf.riseclipse.util.RiseClipseMessage;
+import fr.centralesupelec.edf.riseclipse.util.Severity;
 
 @SuppressWarnings( "serial" )
 public class ResultPane extends JPanel implements IRiseClipseConsole, ActionListener {
     
+    private static final String VALIDATOR_UI_CATEGORY = "CIM/ValidatorUI";
+    
+    private final static String formatString = "%1$7s: [$2s] $4s at line $3d";
+    private final static Formatter formatter = new Formatter();
+    
     private final static String newline = "\n";
     
-    private ArrayList< Integer > levels;
-    private ArrayList< String > messages;
+    private ArrayList< RiseClipseMessage > messages;
     private JCheckBox cbInfo;
     private JCheckBox cbWarning;
     private JCheckBox cbError;
@@ -64,7 +71,6 @@ public class ResultPane extends JPanel implements IRiseClipseConsole, ActionList
     public ResultPane( String filename, boolean withButtons ) {
         this.filename = filename;
         
-        levels = new ArrayList<>();
         messages = new ArrayList<>();
 
         setLayout( new BorderLayout( 0, 0 ));
@@ -121,27 +127,30 @@ public class ResultPane extends JPanel implements IRiseClipseConsole, ActionList
         
         for( int i = 0; i < messages.size(); ++i ) {
             boolean display = cbInfo.isSelected();
-            String level = "INFO";
-            switch( levels.get( i )) {
-            case IRiseClipseConsole.INFO_LEVEL:
+            switch( messages.get( i ).getSeverity()) {
+            case INFO:
                 break;
-            case IRiseClipseConsole.WARNING_LEVEL:
-                display = cbWarning.isSelected() | cbError.isSelected();
-                level = "WARNING";
+            case WARNING:
+                display = cbWarning.isSelected();
                 break;
-            case IRiseClipseConsole.ERROR_LEVEL:
+            case ERROR:
                 display = cbError.isSelected();
-                level = "ERROR";
+                break;
+            case FATAL:
+                break;
+            default:
                 break;
             }
             if( display ) {
-                String m = messages.get( i );
-                if(( m.length() > 0 ) && ( m.charAt( 0 ) == '\t' )) {
-                    buf.append( level + ":" + m + newline );
-                }
-                else {
-                    buf.append( level + ":\t" + m + newline );
-                }
+                String m = formatter.format(
+                         formatString,
+                         messages.get( i ).getSeverity(),
+                         messages.get( i ).getCategory(),
+                         messages.get( i ).getLineNumber(),
+                         messages.get( i ).getMessage()
+                ).toString();
+                buf.append( m );
+                buf.append( newline );
             }
         }
 
@@ -149,48 +158,14 @@ public class ResultPane extends JPanel implements IRiseClipseConsole, ActionList
     }
 
     @Override
-    public int setLevel( int level ) {
+    public Severity setLevel( Severity level ) {
         // We keep all messages
-        return IRiseClipseConsole.INFO_LEVEL;
-    }
-
-    /**
-     * Utility to create a String by concatenation of Object
-     */
-    private String toString( Object... objects ) {
-        StringBuilder s = new StringBuilder();
-        for( int i = 0; i < objects.length; ++i ) s.append( objects[i].toString() );
-        return s.toString();
-    }
-    
-    @Override
-    public void verbose( Object... o ) {
-        levels.add( IRiseClipseConsole.VERBOSE_LEVEL );
-        messages.add( toString( o ));
+        return Severity.VERBOSE;
     }
 
     @Override
-    public void info( Object... o ) {
-        levels.add( IRiseClipseConsole.INFO_LEVEL );
-        messages.add( toString( o ));
-    }
-
-    @Override
-    public void warning( Object... o ) {
-        levels.add( IRiseClipseConsole.WARNING_LEVEL );
-        messages.add( toString( o ));
-    }
-
-    @Override
-    public void error( Object... o ) {
-        levels.add( IRiseClipseConsole.ERROR_LEVEL );
-        messages.add( toString( o ));
-    }
-
-    @Override
-    public void fatal( Object... o ) {
-        levels.add( IRiseClipseConsole.FATAL_LEVEL );
-        messages.add( toString( o ));
+    public void output( RiseClipseMessage message ) {
+        messages.add( message );
     }
 
     @Override
@@ -215,7 +190,7 @@ public class ResultPane extends JPanel implements IRiseClipseConsole, ActionList
                 br.close();
             }
             catch( IOException ex ) {
-                AbstractRiseClipseConsole.getConsole().error( ex.getMessage() );
+                AbstractRiseClipseConsole.getConsole().error( VALIDATOR_UI_CATEGORY, 0, ex.getMessage() );
                 return;
             }
             
@@ -239,7 +214,7 @@ public class ResultPane extends JPanel implements IRiseClipseConsole, ActionList
                     writer.close();
                 }
                 catch( IOException ex ) {
-                    AbstractRiseClipseConsole.getConsole().error( ex.getMessage() );
+                    AbstractRiseClipseConsole.getConsole().error( VALIDATOR_UI_CATEGORY, 0, ex.getMessage() );
                 }
             }
             
@@ -248,15 +223,29 @@ public class ResultPane extends JPanel implements IRiseClipseConsole, ActionList
 
     @Override
     public void displayIdenticalMessages() {
-        // TODO Auto-generated method stub
-        
+        // Not taken into account for the moment
     }
 
     @Override
     public void doNotDisplayIdenticalMessages() {
-        // TODO Auto-generated method stub
-        
+        // Not taken into account for the moment
     }
-    
-    
+
+    @Override
+    public Severity getLevel() {
+        return Severity.VERBOSE;
+    }
+
+    @Override
+    public String getFormatString() {
+        // Not taken into account for the moment
+        return "";
+    }
+
+    @Override
+    public String setFormatString( String formatString ) {
+        // Not taken into account for the moment
+        return "";
+    }
+
 }
